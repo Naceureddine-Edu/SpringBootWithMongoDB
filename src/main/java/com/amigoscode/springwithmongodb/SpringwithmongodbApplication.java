@@ -39,13 +39,13 @@ public class SpringwithmongodbApplication {
             fSujets.add("technologie"); */
 
             Utilisateur utilisateur = new Utilisateur(
-                    null,"hansaoui",
-                    "aziz",
-                    "aziz@gmail.com",
+                    null,"hammouti",
+                    "hamza",
+                    "hamza@gmail.com",
                     Genre.HOMME,
                     adresse,
-                    List.of("Design","Something"),//fSujets AUTRE FACON DE FAIRE !!!!!!!,
-                    77.50,
+                    List.of("DataScience","Python"),//fSujets AUTRE FACON DE FAIRE !!!!!!!,
+                    66.50,
                     LocalDateTime.now());
 
             System.out.println("-----------------------findUtilisateursByEmail------------------");
@@ -59,16 +59,15 @@ public class SpringwithmongodbApplication {
 
             System.out.println("--------------------findUtilisateursByNomContains---------------");
             //System.out.println(utilisateurRepository.findUtilisateursByNomContains("a"));
-            utilisateurRepository.findUtilisateursByNomContains("Ha").forEach(res -> {
+            utilisateurRepository.findUtilisateursByNomContains("ha").forEach(res -> {
                 System.out.println(res);
             });
 
             System.out.println("-----------findUtilisateursByPrenomOrNom--------");
             utilisateurRepository.findUtilisateursByPrenomOrNom(
-                    "hamza", "Hansaoui").forEach(resultat ->
+                    "hamza", "hansaoui").forEach(resultat ->
                     System.out.println(resultat));
 
-            System.out.println("wesh");
         };
     }
 }
