@@ -1,14 +1,18 @@
 package com.amigoscode.springwithmongodb.Models;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@Data
+@Data @AllArgsConstructor @ToString
 @Document
 public class Utilisateur {
 
@@ -21,5 +25,5 @@ public class Utilisateur {
     private Adresse adresse;
     private List<String> favouriteSubjects;
     private Double totalDepenseLivre;
-    private ZonedDateTime creer;
+    private LocalDateTime creer;
 }
