@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,7 @@ public class Utilisateur {
     private String id;
     private String nom;
     private String prenom;
+    @Indexed(unique = true)
     private String email;
     private Genre  genre;
     private Adresse adresse;

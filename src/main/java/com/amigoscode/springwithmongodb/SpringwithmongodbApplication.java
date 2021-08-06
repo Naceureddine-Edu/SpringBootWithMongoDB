@@ -31,23 +31,44 @@ public class SpringwithmongodbApplication {
     {
         return args -> {
 
-            Adresse adresse = new Adresse("Maroc","casablanca","27001");
-            List<String> fSujets = new ArrayList<>();
+            Adresse adresse = new Adresse("Maroc","casablanca","27066");
+
+            /* List<String> fSujets = new ArrayList<>();
             fSujets.add("politique");
             fSujets.add("economie");
-            fSujets.add("technologie");
+            fSujets.add("technologie"); */
 
             Utilisateur utilisateur = new Utilisateur(
-                    null,"Hammouti",
-                    "hamza",
-                    "hamza@gmail.com",
+                    null,"hansaoui",
+                    "aziz",
+                    "aziz@gmail.com",
                     Genre.HOMME,
                     adresse,
-                    fSujets,
+                    List.of("Design","Something"),//fSujets AUTRE FACON DE FAIRE !!!!!!!,
                     77.50,
                     LocalDateTime.now());
 
-            utilisateurRepository.insert(utilisateur);
+            System.out.println("-----------------------findUtilisateursByEmail------------------");
+            utilisateurRepository.findUtilisateursByEmail(utilisateur.getEmail())
+                    .ifPresentOrElse(user -> {
+                        System.out.println(user + " This Email Already Exist, Must be Unique");
+                    },() -> {
+                        utilisateurRepository.insert(utilisateur);
+                        System.out.println(utilisateur + " Has been Added");
+                    });
+
+            System.out.println("--------------------findUtilisateursByNomContains---------------");
+            //System.out.println(utilisateurRepository.findUtilisateursByNomContains("a"));
+            utilisateurRepository.findUtilisateursByNomContains("Ha").forEach(res -> {
+                System.out.println(res);
+            });
+
+            System.out.println("-----------findUtilisateursByPrenomOrNom--------");
+            utilisateurRepository.findUtilisateursByPrenomOrNom(
+                    "hamza", "Hansaoui").forEach(resultat ->
+                    System.out.println(resultat));
+
+            System.out.println("wesh");
         };
     }
 }
