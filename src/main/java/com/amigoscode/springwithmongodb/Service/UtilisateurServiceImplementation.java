@@ -1,4 +1,4 @@
-package com.amigoscode.springwithmongodb.Service;
+package com.amigoscode.springwithmongodb.Service; //NOSONAR
 
 
 import com.amigoscode.springwithmongodb.Models.Utilisateur;
@@ -22,7 +22,7 @@ public class UtilisateurServiceImplementation implements UtilisateurService
 
     @Override
     public Utilisateur chercherUtilisateurParId(String id) {
-        return utilisateurRepository.findById(id).get();
+        return utilisateurRepository.findById(id).get(); //NOSONAR
     }
 
     @Override
